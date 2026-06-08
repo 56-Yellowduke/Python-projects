@@ -1,9 +1,20 @@
-product_inventory = []
+import json
+
+try:
+    with open("product_data.json", "r") as file:
+        product_inventory = json.load(file)
+except:
+    product_inventory = []
+
+def save_data():
+    with open("product_data.json", "w") as file:
+        json.dump(product_inventory, file)
 
 def add_inventory(name, price, quantity) :
     inventory = {"name": name, "price": price, "quantity": quantity}
     product_inventory.append (inventory)
     print(name, "added sucessfully")
+    save_data()
 
 
 def view_inventory():
@@ -28,6 +39,7 @@ def delete_inventory(name):
         if inventory["name"].lower() == name.lower():
              product_inventory.remove(inventory)
              print(name, "deleted sucessfully !")
+             save_data()
              return
     print(name, "not found!")
 
