@@ -4,7 +4,7 @@ try:
     with open("product_data.json", "r") as file:
         product_inventory = json.load(file)
 except:
-    product_inventory = []
+     product_inventory = []
 
 def save_data():
     with open("product_data.json", "w") as file:
@@ -53,11 +53,17 @@ while True :
 
     choice = input("\nChoose an option: ")
 
-    if choice == "1" :
+    if choice == "1":
+       while True:
+         try:
             name = input("Enter inventory name: ")
             price = int(input("Enter price: "))
             quantity = int(input("Enter quantity: "))
             add_inventory(name, price, quantity)
+            break
+         except ValueError:
+            print("Invalid input! Phone number must be digits only. Try again!")
+    
 
     elif choice == "2" :
             view_inventory()
