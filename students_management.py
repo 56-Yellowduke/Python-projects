@@ -68,10 +68,15 @@ while True:
     choice = input("\nChoose an option: ")
 
     if choice == "1":
-        name = input("Enter student name: ")
-        age = int(input("Enter student age: "))
-        score = int(input("Enter student score: "))
-        add_student(name, age, score)
+        while True :
+            try:
+                name = input("Enter student name: ")
+                age = int(input("Enter student age: "))
+                score = int(input("Enter student score: "))
+                add_student(name, age, score)
+                break
+            except ValueError:
+                print("Invalid input! Age and score must be numbers. Try again! ")
 
     elif choice == "2":
          view_students()
