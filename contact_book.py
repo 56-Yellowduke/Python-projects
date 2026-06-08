@@ -57,10 +57,15 @@ while True:
   choice = input("\nChoose an option: ")
 
   if choice == "1" :
-    name = input("Enter contact name: ")
-    phone_number = int(input("Enter phone number: "))
-    email = input("Enter email address: ")
-    add_contact(name, phone_number, email)
+       while True:
+          try:
+              name = input("Enter contact name: ")
+              phone_number = int(input("Enter phone number: "))
+              email = input("Enter email address: ")
+              add_contact(name, phone_number, email)
+              break
+          except ValueError:
+             print("Invalid input! Phone number must be digits only. Try again! ")
 
   elif choice == "2" :
     view_contact()
